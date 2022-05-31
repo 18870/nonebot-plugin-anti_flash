@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "nonebot_plugin_anti_flash"
+version = "0.1.0"
+description = ""
+authors = ["18870 <a20110123@163.com>"]
+
+[tool.poetry.dependencies]
+python = "^3.7.3"
+nonebot2 = "^2.0.0-beta.1"
+nonebot-adapter-onebot = "^2.0.0-beta.1"
+
+[tool.poetry.dev-dependencies]
+pytest = "^5.2"
+
+[build-system]
+requires = ["poetry-core>=1.0.0"]
+build-backend = "poetry.core.masonry.api"
