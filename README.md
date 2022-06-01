@@ -27,9 +27,15 @@
 
 ## 依赖
 `nonebot2 >= 2.0.0beta.1` 
+
 `nonebot-adapter-onebot >= 2.0.0-beta.1` 
+
 `go-cqhttp == 1.0.0-rc1` 
-`python-magic`
+
+启用保存图片时需要以下依赖
+`httpx` 
+
+`python-magic` 
 
 `libmagic1`:
 - `pip install python-magic-bin` (Windows)

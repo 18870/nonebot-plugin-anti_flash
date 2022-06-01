@@ -3,7 +3,6 @@ import pathlib
 import re
 import time
 
-import httpx
 from nonebot import on_message, logger
 from nonebot.adapters.onebot.v11 import (
     Bot,
@@ -12,25 +11,17 @@ from nonebot.adapters.onebot.v11 import (
     MessageEvent,
     MessageSegment,
 )
-from nonebot.params import Depends
 
 from .config import plugin_config
 
 FILE = re.compile(r"file=(.*?)\.image.*type=flash", re.S)
 
 
-async def get_client() -> httpx.AsyncClient:
-    async with httpx.AsyncClient() as client:
-        yield client
-
-
 anti_flash_matcher = on_message(priority=1, block=False)
 
 
 @anti_flash_matcher.handle()
-async def _(
-    bot: Bot, event: MessageEvent, client: httpx.AsyncClient = Depends(get_client)
-):
+async def _(bot: Bot, event: MessageEvent):
     message = str(event.get_message())
     msg0 = event.get_message()[0]
     if message.startswith("&#91;") and message.endswith("&#93;"):  # go-cq issue
@@ -77,7 +68,6 @@ async def _(
             url,
             path=path,
             filename=f"{event.user_id}-{imgid}",
-            client=client,
         )
 
 

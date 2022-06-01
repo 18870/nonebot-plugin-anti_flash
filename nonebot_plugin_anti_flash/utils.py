@@ -1,16 +1,15 @@
 import io
 import mimetypes
-
-import httpx
-import magic
 from nonebot import logger
 from pydantic import FilePath, HttpUrl
 
 
-async def save_image_from_url(
-    url: HttpUrl, path: FilePath, filename: str, client: httpx.AsyncClient
-):
-    r = await client.get(url)
+async def save_image_from_url(url: HttpUrl, path: FilePath, filename: str):
+    import httpx
+    import magic
+
+    async with httpx.AsyncClient() as client:
+        r = await client.get(url)
     img = io.BytesIO()
     async for b in r.aiter_bytes():
         img.write(b)
