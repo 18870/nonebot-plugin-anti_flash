@@ -25,7 +25,10 @@ async def _(bot: Bot, event: MessageEvent):
     message = str(event.get_message())
     msg0 = event.get_message()[0]
     if message.startswith("&#91;") and message.endswith("&#93;"):  # go-cq issue
-        imgid: str = FILE.findall(message)[0]
+        if res := FILE.findall(message):
+            imgid: str = res[0]
+        else:
+            return
     elif msg0.type == "image" and "type" in msg0.data and msg0.data["type"] == "flash":
         imgid: str = msg0.data["file"].rstrip(".image")
     else:
