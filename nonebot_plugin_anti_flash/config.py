@@ -10,6 +10,7 @@ class Config(BaseSettings):
     anti_flash_send_user: List[int] = []
     anti_flash_send_group: List[int] = []
     anti_flash_save_folder: Optional[str] = None
+    anti_flash_access_address: Optional[str] = None
 
     class Config:
         extra = "ignore"

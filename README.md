@@ -25,6 +25,11 @@
 - 默认值: `None`
 - 示例: `./data/flash/`
 
+`anti_flash_access_address`: `Optional[str]`
+- 公网可以访问到的地址，用于访问服务器上保存的图片（原始链接的图片可能会被tx删除）
+- 默认值: `None`
+- 示例: `http://11.22.33.123:12345/`
+
 ## 依赖
 `nonebot2 >= 2.0.0beta.1` 
 
@@ -32,7 +37,8 @@
 
 `go-cqhttp == 1.0.0-rc1` 
 
-启用保存图片时需要以下依赖
+启用保存图片时需要以下依赖 
+
 `httpx` 
 
 `python-magic` 
@@ -41,6 +47,10 @@
 - `pip install python-magic-bin` (Windows)
 - `apt-get install libmagic1` (Debian/Ubuntu)
 - `yum install file-devel` (Centos 7)
+
+启用公网访问图片时需要使用 `fastapi` 驱动器
+
+> 注意做好防护措施
 
 
 ## 这有什么用

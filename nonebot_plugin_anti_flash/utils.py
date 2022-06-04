@@ -25,3 +25,5 @@ async def save_image_from_url(url: HttpUrl, path: FilePath, filename: str):
     img.seek(0)
     with open(path / f"{filename}{ext}", mode="wb") as f:
         f.write(img.read())
+
+    return ext
